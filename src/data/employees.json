@@ -1,0 +1,4 @@
+[
+    { "id":1,"name": "Ali", "surname": "Yılmaz", "phone": "555-1234" },
+    { "id":2,"name": "Ayşe", "surname": "Kara", "phone": "555-5678" }
+  ]
