@@ -8,7 +8,8 @@ class EmployeeList extends connect(store)(LitElement) {
     employees: { type: Array },
     selectedEmployee: { type: Object },
     currentPage: { type: Number },
-    employeesPerPage: { type: Number }
+    employeesPerPage: { type: Number },
+    store: { type: Object }
   };
 
   constructor() {
@@ -16,18 +17,27 @@ class EmployeeList extends connect(store)(LitElement) {
     this.selectedEmployee = null;
     this.currentPage = 1;
     this.employeesPerPage = 10;
+    this.store = store;
+    this.employees = [];
   }
 
   connectedCallback() {
     super.connectedCallback();
-    if (!this.employees) {
-      this.employees = store.getState().employees;
+    this.employees = this.store.getState().employees || [];
+    this.unsubscribe = this.store.subscribe(() => {
+      this.stateChanged(this.store.getState());
+    });
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    if (this.unsubscribe) {
+      this.unsubscribe();
     }
-    store.subscribe(() => this.stateChanged(store.getState()));
   }
 
   stateChanged(state) {
-    this.employees = state.employees;
+    this.employees = state.employees || [];
     this.requestUpdate();
   }
 
@@ -38,7 +48,7 @@ class EmployeeList extends connect(store)(LitElement) {
   }
 
   deleteEmployee(id) {
-    store.dispatch(employeeSlice.actions.deleteEmployee(id));
+    this.store.dispatch(employeeSlice.actions.deleteEmployee(id));
   }
 
   // ✅ Sayfa değiştirme fonksiyonları

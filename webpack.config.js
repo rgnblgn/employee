@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-
 module.exports = {
   mode: 'development',
   entry: './src/index.js',
@@ -18,29 +17,32 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
         },
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"], // CSS dosyalarını işler
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
   devServer: {
-    static: path.join(__dirname, 'dist'),
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
     compress: true,
-    port: 9000,
+    port: 8080,
+    hot: true,
+    historyApiFallback: true
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin({
-      patterns: [{ from: 'src/data', to: 'data' }],
-    }),
     new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: './index.html',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/data', to: 'data', noErrorOnMissing: true }
+      ],
     }),
   ],
 };
