@@ -90,6 +90,7 @@ class EmployeeList extends connect(store)(LitElement) {
             <th>${translate("temail")}</th>
             <th>${translate("department")}</th>
             <th>${translate("position")}</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -133,7 +134,7 @@ class EmployeeList extends connect(store)(LitElement) {
     }
 
     .employee-table th {
-      background-color: #007bff;
+       background-color:rgb(230, 157, 0);
       color: white;
       font-weight: bold;
       text-transform: uppercase;

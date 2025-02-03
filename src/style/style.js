@@ -13,7 +13,7 @@ export const sharedStyles = css`
     display: flex;
     justify-content: center;
     gap: 15px;
-    background-color: #0073e6;
+    background-color:rgb(230, 157, 0);
     padding: 10px;
     border-radius: 8px;
   }
@@ -76,7 +76,7 @@ export const sharedStyles = css`
   }
   
   button {
-    background: #0073e6;
+     background-color:rgb(230, 157, 0);
     color: white;
     border: none;
     padding: 10px;
