@@ -6,12 +6,16 @@ import { translate } from "../helper/helper.js"
 class EmployeeList extends connect(store)(LitElement) {
   static properties = {
     employees: { type: Array },
-    selectedEmployee: { type: Object }
+    selectedEmployee: { type: Object },
+    currentPage: { type: Number },
+    employeesPerPage: { type: Number }
   };
 
   constructor() {
     super();
     this.selectedEmployee = null;
+    this.currentPage = 1;
+    this.employeesPerPage = 10;
   }
 
   connectedCallback() {
@@ -37,6 +41,31 @@ class EmployeeList extends connect(store)(LitElement) {
     store.dispatch(employeeSlice.actions.deleteEmployee(id));
   }
 
+  // ✅ Sayfa değiştirme fonksiyonları
+  goToPage(page) {
+    this.currentPage = page;
+  }
+
+  get paginatedEmployees() {
+    const startIndex = (this.currentPage - 1) * this.employeesPerPage;
+    return this.employees.slice(startIndex, startIndex + this.employeesPerPage);
+  }
+
+  renderPagination() {
+    const totalPages = Math.ceil(this.employees.length / this.employeesPerPage);
+    return html`
+      <div class="pagination">
+        ${Array.from({ length: totalPages }, (_, i) => i + 1).map(page => html`
+          <button 
+            class="${this.currentPage === page ? 'active' : ''}" 
+            @click=${() => this.goToPage(page)}>
+            ${page}
+          </button>
+        `)}
+      </div>
+    `;
+  }
+
   render() {
     return html`
       <h3>Employee List</h3>
@@ -54,7 +83,7 @@ class EmployeeList extends connect(store)(LitElement) {
           </tr>
         </thead>
         <tbody>
-          ${this.employees.map(emp => html`
+          ${this.paginatedEmployees.map(emp => html`
             <tr class="employee-item">
               <td>${emp.name}</td>
               <td>${emp.surname}</td>
@@ -72,6 +101,8 @@ class EmployeeList extends connect(store)(LitElement) {
           `)}
         </tbody>
       </table>
+      
+      ${this.renderPagination()}
     `;
   }
 
@@ -79,28 +110,106 @@ class EmployeeList extends connect(store)(LitElement) {
     .employee-table {
       width: 100%;
       border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
     }
+
     .employee-table th, .employee-table td {
-      border: 1px solid #ddd;
-      padding: 8px;
+      padding: 12px;
       text-align: left;
+      border-bottom: 1px solid #ddd;
     }
+
     .employee-table th {
-      background-color: #f4f4f4;
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
     }
+
+    .employee-item:hover {
+      background-color: #f9f9f9;
+    }
+
+    .employee-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
     .employee-actions button {
-      margin-left: 5px;
-      padding: 5px 10px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    .edit-button {
+      background-color: #f0ad4e;
+      color: white;
+    }
+
+    .edit-button:hover {
+      background-color: #ec971f;
+    }
+
+    .delete-button {
+      background-color: #d9534f;
+      color: white;
+    }
+
+    .delete-button:hover {
+      background-color: #c9302c;
+    }
+
+    /* ✅ Pagination CSS */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+    }
+
+    .pagination button {
+      margin: 5px;
+      padding: 8px 12px;
       border: none;
       cursor: pointer;
-    }
-    .edit-button {
-      background-color: orange;
+      font-size: 0.9rem;
+      border-radius: 5px;
+      background-color: #007bff;
       color: white;
+      transition: 0.3s;
     }
-    .delete-button {
-      background-color: red;
-      color: white;
+
+    .pagination button:hover {
+      background-color: #0056b3;
+    }
+
+    .pagination button.active {
+      background-color: #0056b3;
+      font-weight: bold;
+    }
+
+    /* ✅ Responsive için */
+    @media (max-width: 768px) {
+      .employee-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .employee-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .employee-actions button {
+        width: 100%;
+      }
     }
   `;
 }

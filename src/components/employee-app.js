@@ -4,6 +4,7 @@ import { configureStore, createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { translate} from "../helper/helper.js"
 import "./employee-list.js"
 import "./employee-add.js"
+import {sharedStyles} from "../style/style.js"
 
 const fetchEmployees = createAsyncThunk('employees/fetchEmployees', async () => {
   const response = await fetch('/data/employees.json');
@@ -52,52 +53,9 @@ export const store = configureStore({
 });
 
 class EmployeeApp extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    nav {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    nav a {
-      text-decoration: none;
-      color: white;
-      background-color: blue;
-      padding: 10px;
-      border-radius: 5px;
-    }
-    .employee-list {
-      list-style: none;
-      padding: 0;
-    }
-    .employee-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-      margin-bottom: 5px;
-      background: #f4f4f4;
-      border-radius: 5px;
-    }
-    .employee-actions button {
-      margin-left: 5px;
-      padding: 5px 10px;
-      border: none;
-      cursor: pointer;
-    }
-    .edit-button {
-      background-color: orange;
-      color: white;
-    }
-    .delete-button {
-      background-color: red;
-      color: white;
-    }
-  `;
+ 
+
+  static styles = [sharedStyles];
 
   firstUpdated() {
     const router = new Router(this.shadowRoot.querySelector('#outlet'));

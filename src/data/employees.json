@@ -1,4 +1,26 @@
 [
-    { "id":1,"name": "Ali", "surname": "Yılmaz", "phone": "555-1234" },
-    { "id":2,"name": "Ayşe", "surname": "Kara", "phone": "555-5678" }
-  ]
+    { "id":1,"name": "Ali", "surname": "Yılmaz", "phone": "5551234123" ,"email":"ali@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Ayşe", "surname": "Akın", "phone": "5554324343" ,"email":"ayse@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Selim", "surname": "Bora", "phone": "5554324343" ,"email":"selim@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Ali", "surname": "Yılmaz", "phone": "5551234123" ,"email":"ali@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Ayşe", "surname": "Akın", "phone": "5554324343" ,"email":"ayse@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Selim", "surname": "Bora", "phone": "5554324343" ,"email":"selim@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Ali", "surname": "Yılmaz", "phone": "5551234123" ,"email":"ali@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Ayşe", "surname": "Akın", "phone": "5554324343" ,"email":"ayse@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Selim", "surname": "Bora", "phone": "5554324343" ,"email":"selim@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Ali", "surname": "Yılmaz", "phone": "5551234123" ,"email":"ali@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Ayşe", "surname": "Akın", "phone": "5554324343" ,"email":"ayse@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Selim", "surname": "Bora", "phone": "5554324343" ,"email":"selim@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Ali", "surname": "Yılmaz", "phone": "5551234123" ,"email":"ali@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Ayşe", "surname": "Akın", "phone": "5554324343" ,"email":"ayse@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Selim", "surname": "Bora", "phone": "5554324343" ,"email":"selim@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Ali", "surname": "Yılmaz", "phone": "5551234123" ,"email":"ali@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Ayşe", "surname": "Akın", "phone": "5554324343" ,"email":"ayse@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Selim", "surname": "Bora", "phone": "5554324343" ,"email":"selim@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Ali", "surname": "Yılmaz", "phone": "5551234123" ,"email":"ali@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Ayşe", "surname": "Akın", "phone": "5554324343" ,"email":"ayse@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Selim", "surname": "Bora", "phone": "5554324343" ,"email":"selim@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Ali", "surname": "Yılmaz", "phone": "5551234123" ,"email":"ali@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Ayşe", "surname": "Akın", "phone": "5554324343" ,"email":"ayse@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"},
+    { "id":1,"name": "Selim", "surname": "Bora", "phone": "5554324343" ,"email":"selim@asd.com", "birthDate":"21.21.98","employmentDate":"12.12.12","department":"Tech","position":"Junior"}
+]

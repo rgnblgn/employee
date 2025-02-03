@@ -98,15 +98,44 @@ class EmployeeAdd extends LitElement {
       `;
     }
 
-    static styles = css`
-      .error {
-        border: 2px solid red;
-      }
-      .error-text {
-        color: red;
-        font-size: 12px;
-      }
-    `;
+    static styles = css`.error {
+    border: 2px solid red;
+    }
+
+    .error-text {
+      color: red;
+      font-size: 12px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 10px;
+    } `;
   }
   
   customElements.define('employee-add', EmployeeAdd);
