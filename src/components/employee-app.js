@@ -1,10 +1,9 @@
 import { LitElement, html, css } from 'lit';
 import { Router } from '@vaadin/router';
 import { configureStore, createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { translate} from "../helper/helper.js"
 import "./employee-list.js"
 import "./employee-add.js"
-import "./employee-edit.js"
-
 
 const fetchEmployees = createAsyncThunk('employees/fetchEmployees', async () => {
   const response = await fetch('/data/employees.json');
@@ -27,12 +26,11 @@ export const employeeSlice = createSlice({
       localStorage.setItem('employees', JSON.stringify(state));
     },
     editEmployee: (state, action) => {
-      const { id, updatedEmployee } = action.payload;
-      const index = state.findIndex(emp => emp.id === id);
-      if (index !== -1) {
-        state[index] = updatedEmployee;
-        localStorage.setItem('employees', JSON.stringify(state));
-      }
+      const { index, data } = action.payload;
+      const newState = [...state];
+      newState[index] = data;
+      localStorage.setItem('employees', JSON.stringify(newState));
+      return newState;
     },
     deleteEmployee: (state, action) => {
       const updatedState = state.filter(emp => emp.id !== action.payload);
@@ -106,17 +104,17 @@ class EmployeeApp extends LitElement {
     router.setRoutes([
       { path: '/', component: 'employee-list' },
       { path: '/add', component: 'employee-add' },
-      { path: '/edit', component: 'employee-edit' }
-
+      { path: '/edit/:id', component: 'employee-add' } 
     ]);
+    console.log(router.routes);
     store.dispatch(fetchEmployees());
   }
 
   render() {
     return html`
       <nav>
-        <a href="/">Employee List</a>
-        <a href="/add">Add Employee</a>
+        <a href="/">${translate("employeeList")}</a>
+        <a href="/add">${translate("addEmployee")}</a>
       </nav>
       <div id="outlet"></div>
     `;

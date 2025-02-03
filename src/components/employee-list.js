@@ -1,6 +1,7 @@
 import { store, employeeSlice } from "./employee-app.js";
 import { connect } from 'lit-redux-watch';
 import { LitElement, html, css } from 'lit';
+import { translate } from "../helper/helper.js"
 
 class EmployeeList extends connect(store)(LitElement) {
   static properties = {
@@ -28,7 +29,8 @@ class EmployeeList extends connect(store)(LitElement) {
 
   editEmployee(employee) {
     this.selectedEmployee = { ...employee };
-    window.location.href = "/edit"
+    window.history.pushState({}, '', "/edit/"+this.selectedEmployee.id);
+    window.dispatchEvent(new Event('popstate'));
   }
 
   deleteEmployee(id) {
@@ -41,14 +43,14 @@ class EmployeeList extends connect(store)(LitElement) {
       <table class="employee-table">
         <thead>
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Date of Employment</th>
-            <th>Date of Birth</th>
-            <th>Phone Number </th>
-            <th>Email Address </th>
-            <th>Department</th>
-            <th>Position</th>
+            <th>${translate("firstName")}</th>
+            <th>${translate("lastName")}</th>
+            <th>${translate("doe")}</th>
+            <th>${translate("dob")}</th>
+            <th>${translate("tphone")}</th>
+            <th>${translate("temail")}</th>
+            <th>${translate("department")}</th>
+            <th>${translate("position")}</th>
           </tr>
         </thead>
         <tbody>
@@ -63,8 +65,8 @@ class EmployeeList extends connect(store)(LitElement) {
               <td>${emp.department}</td>
               <td>${emp.position}</td>
               <td class="employee-actions">
-                <button class="edit-button" @click=${() => this.editEmployee(emp)}>Düzenle</button>
-                <button class="delete-button" @click=${() => this.deleteEmployee(emp.id)}>Sil</button>
+                <button class="edit-button" @click=${() => this.editEmployee(emp)}>${translate("edit")}</button>
+                <button class="delete-button" @click=${() => this.deleteEmployee(emp.id)}>${translate("delete")}</button>
               </td>
             </tr>
           `)}
