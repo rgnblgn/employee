@@ -45,5 +45,13 @@ const translations = {
     }
   };
   
-  const getCurrentLang = () => document.documentElement.lang || 'en';
-  export const translate = (key) => translations[getCurrentLang()][key] || key;
+  const getCurrentLang = () => {
+    const lang = document.documentElement.lang;
+    // Geçerli bir dil değeri yoksa 'en' döndür
+    return (lang && translations[lang]) ? lang : 'en';
+  };
+
+  export const translate = (key) => {
+    const lang = getCurrentLang();
+    return translations[lang][key] || key;
+  };

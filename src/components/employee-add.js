@@ -67,7 +67,6 @@ class EmployeeAdd extends LitElement {
       }
       this.newEmployee = { name: '', surname: '', phone: '', email: '', birthDate: '', employmentDate: '', department: '', position: '' };
       this.errors = {};
-      prompt("eklendi")
       window.history.pushState({}, '', '/');
       window.dispatchEvent(new Event('popstate'));
     }
